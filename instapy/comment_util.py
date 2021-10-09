@@ -82,7 +82,7 @@ def comment_image(browser, username, comments, blacklist, logger, logfolder):
             comment_input = get_comment_input(browser)
             # below, an extra space is added to force
             # the input box to update the reactJS core
-            comment_to_be_sent = rand_comment
+            comment_to_be_sent = rand_comment + " "
 
             # wait, to avoid crash
             sleep(2)
@@ -360,14 +360,6 @@ def verify_commented_image(browser, link, owner, logger):
         for value in data["edges"]:
             commenter = value["node"]["owner"]["username"]
             comment = value["node"]["text"]
-
-            if commenter and commenter == owner:
-                message = (
-                    "--> The post has already been commented on before: '{}'".format(
-                        comment
-                    )
-                )
-                return True, message
 
     except NoSuchElementException:
         # Cannot be determined if the post has been comment by InstaPy user,

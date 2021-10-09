@@ -361,14 +361,6 @@ def verify_commented_image(browser, link, owner, logger):
             commenter = value["node"]["owner"]["username"]
             comment = value["node"]["text"]
 
-            if commenter and commenter == owner:
-                message = (
-                    "--> The post has already been commented on before: '{}'".format(
-                        comment
-                    )
-                )
-                return True, message
-
     except NoSuchElementException:
         # Cannot be determined if the post has been comment by InstaPy user,
         # and then it will not be commented until next loop, maybe comments
